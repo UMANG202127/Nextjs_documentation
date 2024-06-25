@@ -51,3 +51,14 @@ Styling	- Support for your preferred styling methods, including CSS Modules, Tai
           and User Experience.
 TypeScript - Improved support for TypeScript, with better type checking and more efficient compilation, as 
              well as custom TypeScript Plugin and type checker.
+
+
+
+2. Installation .....
+
+System Requirements:
+
+Node.js 18.17 or later.
+macOS, Windows (including WSL), and Linux are supported.
+
+![alt text](<Screenshot 2024-06-25 133933.png>)
