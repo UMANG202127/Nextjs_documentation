@@ -9,15 +9,15 @@
 3. Building Your Application
 4. Routing
 5. Data Fetching
-7. Rendering
-8. Caching
-9. Styling
-10. Optimizing
-11. Configuring
-12. Testing
-13. Authentication
-14. Deploying
-15. Upgrading
+6. Rendering
+7. Caching
+8. Styling
+9. Optimizing
+10. Configuring
+11. Testing
+12. Authentication
+13. Deploying
+14. Upgrading
 
 
 1. Introduction to Next.js ......
@@ -401,3 +401,152 @@ Next.js /public folder can be used to serve static assets like images, fonts, an
 
 Analytics and Monitoring:
 For large applications, Next.js integrates with popular analytics and monitoring tools to help you understand how your application is performing. Learn more in the OpenTelemetry and Instrumentation guides.
+
+
+
+10. Configuring ......
+
+Next.js allows you to customize your project to meet specific requirements. This includes integrations with TypeScript, ESlint, and more, as well as internal configuration options such as Absolute Imports and Environment Variables.
+
+- TypeScript:
+  Next.js provides a TypeScript-first development experience for building your React application.
+
+- ESLint:
+  Next.js provides an integrated ESLint experience by default. These conformance rules help you use Next.js 
+  in an optimal way.
+
+- Environment Variables:
+  Learn to add and access environment variables in your Next.js application.
+
+- Absolute Imports and Module Path Aliases:
+  Configure module path aliases that allow you to remap certain import paths.  
+
+- src Directory:
+  Save pages under the `src` directory as an alternative to the root `pages` directory.
+
+- Draft Mode:
+  Next.js has draft mode to toggle between static and dynamic pages. You can learn how it works with App 
+  Router.
+
+
+
+11. Testing .......
+
+In React and Next.js, there are a few different types of tests you can write, each with its own purpose and use cases. This page provides an overview of types and commonly used tools you can use to test your application.
+
+Types of tests:
+
+- Unit testing involves testing individual units (or blocks of code) in isolation. In React, a unit can be a 
+  single function, hook, or component.
+
+- Component testing is a more focused version of unit testing where the primary subject of the tests is React 
+  components. This may involve testing how components are rendered, their interaction with props, and their 
+  behavior in response to user events.
+
+- Integration testing involves testing how multiple units work together. This can be a combination of 
+  components, hooks, and functions.
+
+- End-to-End (E2E) Testing involves testing user flows in an environment that simulates real user scenarios, 
+  like the browser. This means testing specific tasks (e.g. signup flow) in a production-like environment.
+
+- Snapshot testing involves capturing the rendered output of a component and saving it to a snapshot file. 
+  When tests run, the current rendered output of the component is compared against the saved snapshot. 
+  Changes in the snapshot are used to indicate unexpected changes in behavior.
+
+
+Setting up Playwright with Next.js:
+
+Playwright is a testing framework that lets you automate Chromium, Firefox, and WebKit with a single API. You can use it to write End-to-End (E2E) testing. This guide will show you how to set up Playwright with Next.js and write your first tests.
+
+Manual setup
+To install Playwright, run the following command:
+![alt text](<Screenshot 2024-06-25 174324.png>)
+
+Running your Playwright tests
+Playwright will simulate a user navigating your application using three browsers: Chromium, Firefox and Webkit, this requires your Next.js server to be running. We recommend running your tests against your production code to more closely resemble how your application will behave.
+
+Run 'npm run build' and 'npm run start', then run npx playwright test in another terminal window to run the Playwright tests.
+
+
+
+
+12. Authentication .......
+
+
+Authentication verifies a user's identity. This happens when a user logs in, either with a username and password or through a service like Google. It's all about confirming that users are really who they claim to be, protecting both the user's data and the application from unauthorized access or fraudulent activities.
+
+Authentication Strategies:
+Modern web applications commonly use several authentication strategies:
+
+- OAuth/OpenID Connect (OIDC): Enable third-party access without sharing user credentials. Ideal for social 
+  media logins and Single Sign-On (SSO) solutions. They add an identity layer with OpenID Connect.
+
+- Credentials-based login (Email + Password): A standard choice for web applications, where users log in with 
+  an email and password. Familiar and easy to implement, it requires robust security measures against threats 
+  like phishing.
+
+- Passwordless/Token-based authentication: Use email magic links or SMS one-time codes for secure, password- 
+  free access. Popular for its convenience and enhanced security, this method helps reduce password fatigue. 
+  Its limitation is the dependency on the user's email or phone availability.
+
+- Passkeys/WebAuthn: Use cryptographic credentials unique to each site, offering high security against 
+  phishing. Secure but new, this strategy can be difficult to implement.
+
+Selecting an authentication strategy should align with your application's specific requirements, user interface considerations, and security objectives.
+
+Implementing Authentication:
+
+In this section, we'll explore the process of adding basic email-password authentication to a web application. While this method provides a fundamental level of security, it's worth considering more advanced options like OAuth or passwordless logins for enhanced protection against common security threats. The authentication flow we'll discuss is as follows:
+
+1. The user submits their credentials through a login form.
+
+2. The form calls a Server Action.
+
+3. Upon successful verification, the process is completed, indicating the user's successful authentication.
+
+4. If verification is unsuccessful, an error message is shown.
+
+Consider a login form where users can input their credentials:
+![alt text](<Screenshot 2024-06-25 174919.png>)
+
+The form above has two input fields for capturing the user's email and password. On submission, it calls the authenticate Server Action.
+
+You can then call your Authentication Provider's API in the Server Action to handle authentication:
+
+![alt text](<Screenshot 2024-06-25 174957.png>)
+
+In this code, the signIn method checks the credentials against stored user data. After the authentication provider processes the credentials, there are two possible outcomes:
+
+- Successful Authentication: This outcome implies that the login was successful. Further actions, such as 
+  accessing protected routes and fetching user information, can then be initiated.
+- Failed Authentication: In cases where the credentials are incorrect or an error is encountered, the 
+  function returns a corresponding error message to indicate the authentication failure.
+
+Finally, in your login-form.tsx component, you can use React's useFormState to call the Server Action and handle form errors, and use useFormStatus to handle the pending state of the form:
+![alt text](<Screenshot 2024-06-25 175133.png>)
+
+
+
+
+13. Deploying ......
+
+Deploying
+Congratulations, it's time to ship to production.
+
+You can deploy managed Next.js with Vercel, or self-host on a Node.js server, Docker image, or even static HTML files. When deploying using next start, all Next.js features are supported.
+
+Production Builds:
+
+Running next build generates an optimized version of your application for production. HTML, CSS, and JavaScript files are created based on your pages. JavaScript is compiled and browser bundles are minified using the Next.js Compiler to help achieve the best performance and support all modern browsers.
+
+Next.js produces a standard deployment output used by managed and self-hosted Next.js. This ensures all features are supported across both methods of deployment. In the next major version, we will be transforming this output into our Build Output API specification.
+
+Self-Hosting....
+
+You can self-host Next.js in three different ways:
+
+A Node.js server
+A Docker container
+A static export
+
+
