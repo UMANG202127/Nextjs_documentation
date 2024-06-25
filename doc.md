@@ -17,7 +17,7 @@
 11. Testing
 12. Authentication
 13. Deploying
-14. Upgrading
+
 
 
 1. Introduction to Next.js ......
