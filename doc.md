@@ -1,5 +1,7 @@
 // NExtJs Documentation......
 
+![alt text](1_BQZAbczBfLYtPp-6HmN0ZQ.jpg)
+
  Table of Content.
 
 1. Introduction to Next.js
