@@ -1,2 +1,2 @@
-This is my nextjs Documentation
-I am Learning Nextjs
+This is my nextjs Documentation.
+I am Learning Nextjs.
